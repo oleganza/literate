@@ -1,0 +1,28 @@
+
+Literate is an engine for inline specs (tests) in your Ruby code. 
+
+EXAMPLE
+
+  spec "Box says custom message when instantiated with an argument" do 
+    Box.new("Hi!").say.should == "Hi!"
+  end
+
+  class Box
+    def initialize(msg = "Hello, world!")
+      @msg = msg
+    end
+    def say
+      @msg.freeze
+    end
+  end
+
+See & run more examples in the /examples folder.
+
+HOW TO RUN
+
+Literate is tested with itself. Pretty cool, huh?
+Simply run `ruby lib/literate.rb` to test the engine. 
+
+AUTHOR
+
+Oleg Andreev, oleganza@gmail.com
