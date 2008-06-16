@@ -90,22 +90,31 @@ module Literate
   
   class MatchingError < StandardError
   end
+
+  module ::Kernel
+    def spec(desc = nil, &block)
+      Literate::Runner.spec(self, desc, caller, &block)
+    end
+  end
+
+  spec "Object#should should generate a matcher" do
+    nil.should.class.should == Literate::Matchers::Should
+    1.should.class.should == Literate::Matchers::Should
+    :symbol.should_not.class.should == Literate::Matchers::ShouldNot
+    "string".should_not.class.should == Literate::Matchers::ShouldNot
+  end
+
+  class ::Object
+    def should
+      Literate::Matchers::Should.new(self)
+    end
+    def should_not
+      Literate::Matchers::ShouldNot.new(self)
+    end
+  end
+
 end
 
-module Kernel
-  def spec(desc = nil, &block)
-    Literate::Runner.spec(self, desc, caller, &block)
-  end
-end
-
-class Object
-  def should
-    Literate::Matchers::Should.new(self)
-  end
-  def should_not
-    Literate::Matchers::ShouldNot.new(self)
-  end
-end
 
 if __FILE__ == $0
   Literate.run.each do |result|
