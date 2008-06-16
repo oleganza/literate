@@ -32,5 +32,8 @@ module HelloWorld
   end
 end
 
-
-p Literate.run
+if __FILE__ == $0
+  Literate.run.each do |result|
+    puts result
+  end
+end
