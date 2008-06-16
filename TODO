@@ -1,6 +1,7 @@
 [ ] 100% spec coverage for Literate itself.
-[ ] Separate runner (__FILE__ == $0 is a quick hack) 
-[ ] More matchers (consider plug in RSpec or MSpec)
 [ ] Resolve issue with the contexts and setups. 
     Sometimes we need to test the object "from inside".
-
+[ ] Separate runner (__FILE__ == $0 is a quick hack) 
+[ ] Benchmark
+[ ] Profiler
+[ ] More matchers (consider plug in RSpec or MSpec)
